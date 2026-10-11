@@ -10,20 +10,43 @@
 
 ## Стек
 
-- Разное
+- Бекенд: Go (стандартная библиотека `net/http`), линтер golangci-lint
+- Фронтенд: Angular 21 + Taiga UI, тесты на Vitest, ESLint и Prettier
+- CI: GitHub Actions, релизы через release-please по Conventional Commits
 
 ## Установка
 
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
+Нужны Go 1.26+ и Node.js 24+.
 
 ```bash
 git clone https://github.com/cava121/ai-for-developers-project-386.git
 cd ai-for-developers-project-386
+cd frontend && npm ci
 ```
 
 ## Использование
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+Бекенд (API на http://localhost:3000, порт задаётся через `PORT`):
+
+```bash
+cd backend
+go run .
+go test ./...
+golangci-lint run
+```
+
+Фронтенд (интерфейс на http://localhost:4200):
+
+```bash
+cd frontend
+npm start
+npm test
+npm run lint
+npm run format:check
+npm run build
+```
+
+Проверка API: `curl localhost:3000/health` → `{"status":"ok"}`.
 
 ---
 
